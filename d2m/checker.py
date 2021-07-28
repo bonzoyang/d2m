@@ -18,56 +18,56 @@ def duplicateCheck(dataframe, columnMask=None, axis = 0, returnWithoutTop=True):
     :return: Either return "top" and "last" or return all duplicates, depending on "returnWithoutTop"
     :rtype: list
 
+    Here's an example of usage for checker.duplicateCheck API:
+    
+    .. code-block:: python
+        :linenos:
+        
+        from d2m.checker import duplicateCheck
+        # List of Tuples
+        employees = [('Mark', 37, 'Jacksonville', 'Male', 37, 'Male', 37),
+                     ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
+                     ('Thomas ', 21, 'Omaha', 'Male', 21, 'Male', 21),
+                     ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
+                     ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
+                     ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
+                     ('Thomas ', 36, 'Tampa', 'Male', 36, 'Male', 36),
+                     ('Deborah', 39, 'Tucson', 'Female', 39, 'Female', 39),
+                     ('Issac ', 21, 'Indianapolis', 'Male', 21, 'Male', 21)
+                    ]
 
-    - Example::
+        # Creating a DataFrame object
+        df = pd.DataFrame(employees,
+                          columns = ['Name', 'Age','City', 'Gender', 'age', 'Sex', 'AGE'])
 
-        .. code-block:: python
-            :linenos:
+        duplicateCheck(df)
+        # row [3, 4, 5] are duplicated with row [1]
+        # return: [[1]], [[3, 4, 5]]
+        
+        duplicateCheck(df, columnMask=['Age','City', 'age', 'AGE'])
+        # row [3, 4, 5] are duplicated with row [1]
+        # row [6] are duplicated with row [2]
+        # return: [[1], [2]], [[3, 4, 5], [6]]
 
-            # List of Tuples
-            employees = [('Mark', 37, 'Jacksonville', 'Male', 37, 'Male', 37),
-                         ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
-                         ('Thomas ', 21, 'Omaha', 'Male', 21, 'Male', 21),
-                         ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
-                         ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
-                         ('Ruth', 29, 'Indianapolis', 'Female', 29, 'Female', 29),
-                         ('Thomas ', 36, 'Tampa', 'Male', 36, 'Male', 36),
-                         ('Deborah', 39, 'Tucson', 'Female', 39, 'Female', 39),
-                         ('Issac ', 21, 'Indianapolis', 'Male', 21, 'Male', 21)
-                        ]
-
-            # Creating a DataFrame object
-            df = pd.DataFrame(employees,
-                              columns = ['Name', 'Age','City', 'Gender', 'age', 'Sex', 'AGE'])
-
-            duplicateCheck(df)
-            # row [3, 4, 5] are duplicated with row [1]
-            # return: [[1]], [[3, 4, 5]]
-            
-            duplicateCheck(df, columnMask=['Age','City', 'age', 'AGE'])
-            # row [3, 4, 5] are duplicated with row [1]
-            # row [6] are duplicated with row [2]
-            # return: [[1], [2]], [[3, 4, 5], [6]]
-
-            duplicateCheck(df, columnMask=['Name', 'Age', 'Gender', 'age', 'Sex', 'AGE'], 
-                            returnWithoutTop=False)
-            # row [3, 4, 5, 8] are duplicated with row [1]
-            ## return: [[1, 3, 4, 5, 8]]
-            
-            duplicateCheck(df, axis=1)
-            # column ['age', 'AGE'] are duplicated with column ['Age']
-            # column ['Sex'] are duplicated with column ['Gender']
-            # return: [['Age'], ['Gender']], [['age', 'AGE'], ['Sex']]
-            
-            duplicateCheck(df, columnMask=['City'], axis=1)
-            # column ['age', 'AGE'] are duplicated with column ['Age']
-            # column ['Sex'] are duplicated with column ['Gender']
-            # return: [['Age'], ['Gender']], [['age', 'AGE'], ['Sex']]
-            
-            duplicateCheck(df, axis=1, returnWithoutTop=False)    
-            # column ['age', 'AGE'] are duplicated with column ['Age']
-            # column ['Sex'] are duplicated with column ['Gender']
-            # return: [['Age', 'age', 'AGE'], ['Gender', 'Sex']]
+        duplicateCheck(df, columnMask=['Name', 'Age', 'Gender', 'age', 'Sex', 'AGE'], 
+                        returnWithoutTop=False)
+        # row [3, 4, 5, 8] are duplicated with row [1]
+        ## return: [[1, 3, 4, 5, 8]]
+        
+        duplicateCheck(df, axis=1)
+        # column ['age', 'AGE'] are duplicated with column ['Age']
+        # column ['Sex'] are duplicated with column ['Gender']
+        # return: [['Age'], ['Gender']], [['age', 'AGE'], ['Sex']]
+        
+        duplicateCheck(df, columnMask=['City'], axis=1)
+        # column ['age', 'AGE'] are duplicated with column ['Age']
+        # column ['Sex'] are duplicated with column ['Gender']
+        # return: [['Age'], ['Gender']], [['age', 'AGE'], ['Sex']]
+        
+        duplicateCheck(df, axis=1, returnWithoutTop=False)    
+        # column ['age', 'AGE'] are duplicated with column ['Age']
+        # column ['Sex'] are duplicated with column ['Gender']
+        # return: [['Age', 'age', 'AGE'], ['Gender', 'Sex']]
     """
 
     df = dataframe
