@@ -10,7 +10,7 @@ Welcome to d2m's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   d2m
+   checker
 
 Indices and tables
 ==================

@@ -1,1 +1,5 @@
-src/__pycache__
+d2m/__pycache__
+build
+build_d2m.sh
+d2m.egg-info
+dist

@@ -14,7 +14,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../src'))
+sys.path.insert(0, os.path.abspath('../../d2m'))
 
 # -- Project information -----------------------------------------------------
 
@@ -25,7 +25,7 @@ author = 'bonzoyang'
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '0.0.1 alpha'
+release = '0.0.15'
 
 
 # -- General configuration ---------------------------------------------------
@@ -36,7 +36,7 @@ release = '0.0.1 alpha'
 
 # Added by bonzo
 # [ref] phinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
-autodoc_mock_imports = ['pandas']
+autodoc_mock_imports = ['pandas', 'numpy']
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom

@@ -6,7 +6,7 @@ with open('./README.md', 'r') as fh:
 
 setuptools.setup(
     name='d2m',
-    version='0.0.14',
+    version='0.0.18',
     author='Bonzo Yang',
     author_email='bonzoyang@gmail.com',
     description='A dataframe health checker.',
